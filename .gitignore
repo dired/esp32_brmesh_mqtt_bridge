@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# PlatformIO (ESP32) build dirs
+.pio/
+
+# Runtime BRMesh logs (populated by the monitor/sniffer)
+logs/
+
+# Runtime GUI state
+brmesh_state.json
+brmesh_settings.ini
+
+# Secrets — never commit real keys / passwords
+*.secret
+credentials*
