@@ -156,7 +156,7 @@ the top of each script (`CONFIG` in `brmesh_control_gui.py`, `BROKER`/`DEV` in
 
 This builds on great existing projects:
 
-- [BRMesh_homeassistant](https://github.com/millskyle/BRMesh_homeassistant) by @millskyle
+- [Brmesh-esp32-mqtt](https://github.com/dsclee1/BRmesh-esp32-mqtt) by @dsclee1
 - [brMeshMQTT](https://github.com/ArcadeMachinist/brMeshMQTT) by @ArcadeMachinist
 - `BRMesh_Artnet_Bridge` — the Linux Art-Net bridge this protocol work started from
 
