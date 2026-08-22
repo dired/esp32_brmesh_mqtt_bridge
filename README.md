@@ -63,8 +63,7 @@ MQTT broker (e.g. mosquitto / Home Assistant).
 The bridge needs the 4-byte mesh key that your BRMesh app already uses.
 
 - **WiFi debugging** (Android 11+) or **USB debugging** both work fine these
-  days. For USB you need a **data-capable** cable — many cables are
-  charge-only and won't work.
+  days. For USB debugging, not all data-capable cables worked for me. For wifi-debugging, simply click in developer options to pair via code, it shows the ip port and 6-digit code and you simply run `adb pair {ip}:{port}` then you can use logcat immediately.
 - With the app open, toggle a light and watch the log:
 
 ```bash
@@ -92,17 +91,14 @@ Edit `esp32_mqtt_bridge/src/config.h`:
 
 - `MY_KEY_0..3` — your mesh key (the file ships with the placeholder `12345678`).
 - `MQTT_BROKER_ADDR` — your MQTT broker IP.
-- `WIFI_SSID` / `WIFI_PASS` — your WiFi (the file ships with placeholders).
+- `WIFI_SSID` / `WIFI_PASS` — your WiFi.
 - `preconfiguredLights[]` — one entry per light: device number, type, HA id, name.
 
-Pick which mesh block a build targets in `esp32_mqtt_bridge/platformio.ini`:
+In case you ever have multiple meshes, you can pick which brmesh (and according config-block) a build targets in `esp32_mqtt_bridge/platformio.ini`:
 
 ```ini
 build_flags = -D BRMESH_MESH=BRMESH_PAUL
 ```
-
-> The shipped configs use fake values. **Never commit your real key or WiFi
-> password.**
 
 ## Building & flashing (PlatformIO)
 
@@ -111,12 +107,12 @@ python3 -m pip install -U platformio
 
 # bridge firmware
 cd esp32_mqtt_bridge
-pio run -e esp32s3          # or -e esp32dev
-pio run -e esp32s3 -t upload
+pio run -e esp32dev          # or -e esp32s3
+pio run -e esp32dev -t upload
 
 # sniffer firmware
 cd ../esp32_sniffer
-pio run -e esp32s3 -t upload
+pio run -e esp32dev -t upload
 ```
 
 Set `upload_port` / `monitor_port` in each `platformio.ini` if `pio` can't find
@@ -151,15 +147,14 @@ python3 tools/bridge_test_cmds.py light 34 r
 python3 tools/bridge_test_cmds.py group on
 ```
 
-Before using the GUI or CLI, set the MQTT broker and the bridge's device id at
+Before using the GUI or CLI, set the MQTT broker and the bridge's device id (lowercase hex of the bridge ESP32's
+WiFi MAC) at
 the top of each script (`CONFIG` in `brmesh_control_gui.py`, `BROKER`/`DEV` in
-`bridge_test_cmds.py`). The device id is the lowercase hex of the bridge ESP32's
-WiFi MAC, which it also advertises via Home Assistant discovery.
+`bridge_test_cmds.py`).
 
 ## Based on
 
-This builds on great existing projects (their local clones used to live in
-`resources/`, removed for a clean repo):
+This builds on great existing projects:
 
 - [BRMesh_homeassistant](https://github.com/millskyle/BRMesh_homeassistant) by @millskyle
 - [brMeshMQTT](https://github.com/ArcadeMachinist/brMeshMQTT) by @ArcadeMachinist
