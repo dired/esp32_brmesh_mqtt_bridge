@@ -37,4 +37,4 @@ The great existing projects that this work is based off of:
 
  - [BRMesh_homeassistant by @millskyle](https://github.com/millskyle/BRMesh_homeassistant)
  - [brMeshMQTT by @ArcadeMachinist](https://github.com/ArcadeMachinist/brMeshMQTT)
- - BRmesh-esp32-mqtt by @dsclee1](https://github.com/dsclee1/BRmesh-esp32-mqtt)
+ - [BRmesh-esp32-mqtt by @dsclee1](https://github.com/dsclee1/BRmesh-esp32-mqtt)
