@@ -158,6 +158,6 @@ This builds on great existing projects:
 
 - [Brmesh-esp32-mqtt](https://github.com/dsclee1/BRmesh-esp32-mqtt) by @dsclee1
 - [brMeshMQTT](https://github.com/ArcadeMachinist/brMeshMQTT) by @ArcadeMachinist
-- `BRMesh_Artnet_Bridge` — the Linux Art-Net bridge this protocol work started from
+- [BRMesh_Artnet_Bridge](https://github.com/dired/BRMesh_Artnet_Bridge) by myself
 
 See `BRMESH_PROTOCOL.md` for the protocol details.
