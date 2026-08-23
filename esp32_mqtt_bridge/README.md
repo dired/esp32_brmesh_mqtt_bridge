@@ -1,17 +1,10 @@
+## Usage in this project
 
-# BRmesh esp32 mqtt
+1. Fill in brmesh-key (from adb logcat), wifi credentials, and lights (from adb logcat or sniffing) in config.h
+2. Flash on normal esp32 (s3 works as well) which will then be capable of emitting the right ble packets
+3. Use mqtt or the gui in tools/brmesh_control_gui to control the lights
 
-An ESP32 MQTT Home Assistant implementation of the BRmesh app to control lights.
-
-Automatically adds lights and makes them available via an MQTT broker.
-
-
-## Acknowledgements
-
-The great existing projects that this work is based off of:
-
- - [BRMesh_homeassistant by @millskyle](https://github.com/millskyle/BRMesh_homeassistant)
- - [brMeshMQTT by @ArcadeMachinist](https://github.com/ArcadeMachinist/brMeshMQTT)
+---
 
 ## Installation
 
@@ -38,28 +31,10 @@ with its key, fixtures, and broker.
 Serial test commands (e.g. `allon`, `alloff`, `red`, `gb <0-100>`) are handled
 in `loop()` in `src/main.cpp`.
 
-## Usage
+## Acknowledgements
 
-Turn off your lights.
+The great existing projects that this work is based off of:
 
-Turn on the ESP32, if using an ESP32 Dev Module (like I am) the blue light will come on to show it's in scanning mode.
-
-Turn on your lights.
-
-The ESP32 sends an "alive" message to the lights, receives a response back from them, sends a new key (which makes each light flash), and they respond back to say they're set. These are then made available as MQTT devices (should be viewable on your broker by using https://github.com/thomasnordquist/MQTT-Explorer).
-
-You're good to go!
-
-
-
-
-## Bugs
-
-I'm unable to test the "ColorTemperature" code properly as it's not a function that my lights have.
-
-Adding lights has occasionally been flakey. I've tested this code on a group of 7 lights, for which it worked fine, but you'll have to see how you get on. Some of the polling times for the BLE Advertising frames might need adjustment.
-
-## Contributing
-
-Contributions are always welcome!
-
+ - [BRMesh_homeassistant by @millskyle](https://github.com/millskyle/BRMesh_homeassistant)
+ - [brMeshMQTT by @ArcadeMachinist](https://github.com/ArcadeMachinist/brMeshMQTT)
+ - BRmesh-esp32-mqtt by @dsclee1](https://github.com/dsclee1/BRmesh-esp32-mqtt)
